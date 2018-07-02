@@ -6,3 +6,5 @@ const router = new Router();
 router.get('/games', (req, res) => {
     GameController.getAll(req, res)
 });
+
+export default router;

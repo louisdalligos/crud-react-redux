@@ -5,11 +5,11 @@ mongoose.Promise = global.Promise;
 
 const connectToDb = async () => {
     try {
-        await mongoose.connect(config.mongoUrl, { useMongoClient: true });
-        logger.info('Connected to mongo!!!');
+        await mongoose.connect(config.mongoUrl);
+        //logger.info('Connected to mongo!!!');
     }
     catch (err) {
-        logger.error('Could not connect to MongoDB');
+        //logger.error('Could not connect to MongoDB');
     }
 }
 

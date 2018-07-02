@@ -2,6 +2,7 @@ import Game from '../models/game';
 
 const GameController = {};
 
+// get all
 GameController.getAll = async (req, res) => {
 
     try {
@@ -18,3 +19,23 @@ GameController.getAll = async (req, res) => {
     }
 
 }
+
+// add game
+// GameController.addGame = async (req, res) => {
+
+//     try {
+//         if (!req.body.game.title) {
+//             res.status(403).end();
+//         }
+
+//         const newGame = new Game(req.body.game);
+
+
+//     }
+
+//     catch(err) {
+//         console.log(err)
+//     }
+// }
+
+export default GameController;
