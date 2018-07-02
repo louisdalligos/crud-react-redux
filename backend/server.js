@@ -18,6 +18,6 @@ server.use(bodyParser.urlencoded({
 //app.get('/', (req, res) => res.send('Hello world'));
 server.use('/api', games);
 
-server.listen(3005, () => {
-    console.log('server started on port 3005');
+server.listen(8080, () => {
+    console.log('server started on port 8080');
 });
