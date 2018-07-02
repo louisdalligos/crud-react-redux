@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
-import GamesPage from './GamesPage';
 import {
     Collapse,
     Navbar,
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
-    Button
+    NavItem
 } from 'reactstrap';
+import GamesPage from './GamesPage';
+import GameForm from './GameForm';
 
 class App extends Component {
     constructor(props) {
@@ -47,7 +47,8 @@ class App extends Component {
                     </Collapse>
                 </Navbar>
 
-                <Route path="/games" component={GamesPage} />
+                <Route exact path="/games" component={GamesPage} />
+                <Route path="/games/new" component={GameForm} />
             </div>
         );
     }

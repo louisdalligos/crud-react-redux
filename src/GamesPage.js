@@ -3,7 +3,6 @@ import GamesList from './GamesList';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchGames } from './actions';
-import { Container } from 'reactstrap';
 
 class GamesPage extends React.Component {
     
@@ -14,7 +13,7 @@ class GamesPage extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1>Games List</h1>
+                <h3>Games List</h3>
 
                 <GamesList games={this.props.games} />
             </div>
