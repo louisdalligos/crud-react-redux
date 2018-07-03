@@ -52,4 +52,36 @@ GameController.addGame = async (req, res) => {
     }
 }
 
+// update game
+GameController.updateGame = async (req, res) => {
+    
+    try {
+        if (!req.body.game.title && !req.body.game.cover) {
+            res.status(403).end();
+        }
+
+        Game.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+            // Handle database errors
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                game.title = req.body.game.title || game.title;
+                game.cover = req.body.game.cover || game.content;
+                console.log('Game about to be saved');
+                // Save 
+                game.save((err, saved) => {
+                    if (err) {
+                        res.status(500).send(err)
+                    }
+                    res.json({ game: saved });
+                });
+            }
+        });
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+}
+
 export default GameController;

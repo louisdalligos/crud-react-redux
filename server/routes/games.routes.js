@@ -14,4 +14,9 @@ router.post('/games', (req, res) => {
     GameController.addGame(req, res)
 });
 
+// Update game
+router.put('/games', (req, res) => {
+    GameController.updateGame(req, res)
+})
+
 export default router;

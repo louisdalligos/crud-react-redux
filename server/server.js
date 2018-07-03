@@ -12,10 +12,6 @@ server.use(bodyParser.urlencoded({
     extended: false
 }));
 
-
-
-
-//app.get('/', (req, res) => res.send('Hello world'));
 server.use('/api', games);
 
 server.listen(8080, () => {

@@ -1,13 +1,15 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { saveGame } from './actions';
 
 class GameForm extends React.Component {
 
     state = {
         title: '',
-        cover: ''
+        cover: '',
+        done: false
     }
 
     handleOnChange = (e) => {
@@ -19,14 +21,14 @@ class GameForm extends React.Component {
 
         const { title, cover } = this.state
         this.props.saveGame({ title, cover }).then(
-            () => {},
+            () => { this.setState({ done: true })},
         );
 
         console.log('submitted')
     }
 
     render() {
-        return (
+        const form = (
             <div className="container">
                 <h3>Add a new game</h3>
 
@@ -58,6 +60,11 @@ class GameForm extends React.Component {
 
                     <Button>Submit</Button>
                 </Form>
+            </div>
+        )
+        return (
+            <div>
+                { this.state.done ? <Redirect to="/games" /> : form }
             </div>
         );
     }
