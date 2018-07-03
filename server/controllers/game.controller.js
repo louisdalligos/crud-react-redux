@@ -1,6 +1,5 @@
 import Game from '../models/game';
 import cuid from 'cuid';
-import sanitizeHtml from 'sanitize-html';
 
 const GameController = {};
 
@@ -22,18 +21,21 @@ GameController.getAll = async (req, res) => {
 
 }
 
-// add game
+// add game 
 GameController.addGame = async (req, res) => {
 
     try {
-        if (!req.body.game.title) {
+        if (!req.body.game.title && !req.body.game.cover) {
             res.status(403).end();
         }
 
         const newGame = new Game(req.body.game);
 
+        console.log(newGame);
+
         // sanitize input
-        newGame.title = sanitizeHtml(newGame.title);
+        newGame.title = newGame.title;
+        newGame.cover = newGame.cover;
         newGame.cuid = cuid();
 
         newGame.save((err, saved) => {
