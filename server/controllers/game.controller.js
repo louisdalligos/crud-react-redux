@@ -60,7 +60,7 @@ GameController.updateGame = async (req, res) => {
             res.status(403).end();
         }
 
-        Game.findOne({ cuid: req.params.cuid }).exec((err, post) => {
+        Game.findOne({ cuid: req.params.cuid }).exec((err, game) => {
             // Handle database errors
             if (err) {
                 res.status(500).send(err);
@@ -83,5 +83,24 @@ GameController.updateGame = async (req, res) => {
         console.log(err)
     }
 }
+
+// delete game
+GameController.deleteGamet = async (req, res) => {
+    try {
+        Game.findOne({ cuid: req.params.cuid }).exec((err, game) => {
+            if (err) {
+                res.status(500).send(err);
+            }
+
+            game.remove(() => {
+                res.status(200).end();
+            });
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 
 export default GameController;

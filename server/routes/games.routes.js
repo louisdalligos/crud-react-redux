@@ -14,9 +14,14 @@ router.post('/games', (req, res) => {
     GameController.addGame(req, res)
 });
 
-// Update game
-router.put('/games', (req, res) => {
+// Update game by cuid
+router.put('/games/:cuid', (req, res) => {
     GameController.updateGame(req, res)
-})
+});
+
+// Delete game by cuid
+router.delete('/games/:cuid', (req, res) => {
+    GameController.deleteGame(req, res);
+});
 
 export default router;
